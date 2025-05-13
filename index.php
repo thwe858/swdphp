@@ -64,6 +64,8 @@
   var_dump($height);
   var_dump($is_married);
   var_dump($hobbies);
-
   
+
+
 ?>
+
