@@ -4,7 +4,13 @@ if(!isset($_SESSION['login'])){
     header("Location: index.php");
     exit();
 }
+// theme setup 
+ $theme=isset($_COOKIE['theme']) ? $_COOKIE['theme']:'Light';
+ $bg= $theme  == 'dark' ? '#222' : '#fff';
+ $color= $theme == 'dark' ? '#fff' : '#222';
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -14,9 +20,19 @@ if(!isset($_SESSION['login'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome, dashboard</title>
+
+
 </head>
 
-<body>
+<body style="background-color : <?php echo $bg; ?>; color: <?php echo $color; ?>;">
+    Welcome to Dashboard <?php echo $_SESSION['username'];?>
+    <a href="logout.php">Logout</a>
+    <a href="set_theme.php">Switch Theme</a>
+    <select name="theme" id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    <input type="submit" value="Save Theme">
     <?php
    $students=[
         ["name"=>"Aye Aye","grade"=>59],
@@ -38,6 +54,8 @@ if(!isset($_SESSION['login'])){
         </tr>
         <?php endforeach;?>
     </table>
+
+
 </body>
 
 </html>

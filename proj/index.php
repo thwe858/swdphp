@@ -1,8 +1,8 @@
 <?php
 session_start();
 if(isset($_SESSION['login'])){
-    echo "Hello";
-    session_destroy();
+    header("Location: dashboard.php");
+    exit();
 }
 ?>
 
